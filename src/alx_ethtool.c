@@ -1695,7 +1695,7 @@ static void alx_self_test(struct net_device *netdev,
 	if (if_running)
 		dev_close(netdev);
 
-	if (etest->flags == ETH_TEST_FL_OFFLINE) {
+	if (etest->flags & ETH_TEST_FL_OFFLINE) {
 		netif_info(adpt, hw, adpt->netdev,  "offline test start...\n");
 
 		if (alx_diag_register(adpt, &data[0]))
