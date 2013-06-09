@@ -2805,16 +2805,4 @@ static struct pci_driver alx_driver = {
 	.driver.pm   = ALX_PM_OPS,
 };
 
-
-static int __init alx_init_module(void)
-{
-	pr_info("%s\n", alx_drv_desc);
-	return pci_register_driver(&alx_driver);
-}
-module_init(alx_init_module);
-
-static void __exit alx_exit_module(void)
-{
-	pci_unregister_driver(&alx_driver);
-}
-module_exit(alx_exit_module);
+module_pci_driver(alx_driver);
