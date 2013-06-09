@@ -691,7 +691,7 @@ static bool alx_dispatch_skb(struct alx_rx_queue *rxq)
 		/* vlan tag */
 		if (rrd->word3 & (1 << RRD_VLTAGGED_SHIFT)) {
 			u16 tag = ntohs(FIELD_GETX(rrd->word2, RRD_VLTAG));
-			__vlan_hwaccel_put_tag(skb, ntohs(tag));
+			__vlan_hwaccel_put_tag(skb, htons(ETH_P_8021Q), ntohs(tag));
 		}
 		qnum = FIELD_GETX(rrd->word2, RRD_RSSQ) % adpt->nr_rxq;
 		tmp_rxq = ALX_CAP(&adpt->hw, MRQ) ?
