@@ -2650,14 +2650,14 @@ alx_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
 		}
 	}
 
-if (LINUX_VERSION_CODE >= KERNEL_VERSION(3,10,0))
+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(3,10,0))
 	netdev->hw_features = NETIF_F_SG	 |
 			      NETIF_F_HW_CSUM	 |
 			      NETIF_F_HW_VLAN_CTAG_RX |
 			      NETIF_F_TSO        |
 			      NETIF_F_TSO6;
 	netdev->features = netdev->hw_features | NETIF_F_HW_VLAN_CTAG_TX;
-#elseif (LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,39))
+#elif (LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,39))
 	netdev->hw_features = NETIF_F_SG	 |
 			      NETIF_F_HW_CSUM	 |
 			      NETIF_F_HW_VLAN_RX |
